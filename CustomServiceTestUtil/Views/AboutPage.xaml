@@ -1,0 +1,51 @@
+﻿<Page x:Class="CustomServiceTestUtil.Views.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Title="About"
+      d:DesignHeight="600"
+      d:DesignWidth="500"
+      Style="{DynamicResource PageStyle}"
+      mc:Ignorable="d">
+
+    <Border Margin="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Column="0" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="250" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="Custom Service test util for D365FO using JSON - Copyright © 2018 Hasse Ellsäter" FontSize="20" FontWeight="Light" Padding="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+               <!-- <Button x:Name="Tribute" Width="250" Height="100" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" >
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="/CustomServiceTestUtil;component/Resources/iStoneColumbus.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <TextBlock Padding="2"  Grid.Column="0" Grid.Row="2" Text="Installed components and third-party libraries:" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" TextWrapping="WrapWithOverflow" />
+                -->
+            </Grid>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="1">
+                <TextBlock x:Name="VersionInfo" Text="" Padding="2" Margin="{StaticResource ColumnMargin}" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left"/>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</Page>

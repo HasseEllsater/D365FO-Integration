@@ -1,0 +1,122 @@
+﻿<Page x:Class="CustomServiceTestUtil.Views.ConfigureEndpointsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+      Title="Configure Endpoints"
+      d:DesignHeight="600"
+      d:DesignWidth="900"
+      Style="{DynamicResource PageStyle}"
+      Loaded="Page_Loaded" Unloaded="Page_Unloaded"
+      
+      mc:Ignorable="d">
+
+    <Border Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <iconPacks:PackIconModern Width="48" Grid.Row="0"
+                                       Height="48"
+                                       Margin="10"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Top"
+                                       Foreground="{DynamicResource AccentBaseColorBrush}"
+                                       Kind="NetworkServer" />
+            <Canvas Grid.Column="0" Grid.Row="0" Width="180" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle
+                    Width="180"
+                    Height="60"
+                    Fill="{DynamicResource AccentBaseColorBrush}"
+                />
+                <TextBlock Text="ENDPOINTS"
+                Foreground="{DynamicResource IdealForegroundColorBrush}"
+                FontSize="32"
+                Margin="8"
+                FontWeight="Light"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                />
+            </Canvas>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Padding="2" Margin="{StaticResource ColumnMargin}" Content="Name"/>
+                <Label Grid.Column="1" Grid.Row="0" Padding="2" Margin="{StaticResource ColumnMargin}" Content="Server Name"/>
+                <Label Grid.Column="2" Grid.Row="0" Padding="2" Margin="{StaticResource ColumnMargin}" Content="Address"/>
+                <TextBox x:Name="Name" Grid.Column="0" Grid.Row="1" Padding="2" Margin="{StaticResource ColumnMargin}"
+                         HorizontalContentAlignment="Stretch"
+                         Controls:TextBoxHelper.ClearTextButton="False"
+                         Controls:TextBoxHelper.IsWaitingForData="True"
+                         Controls:TextBoxHelper.UseFloatingWatermark="False"
+                         Controls:TextBoxHelper.Watermark="enter a name for the machine"
+                         Controls:TextBoxHelper.WatermarkAlignment="Left"
+                         SpellCheck.IsEnabled="False"
+                         ToolTip="Give the endpoint a name that is easy to remember"/>
+
+                <TextBox x:Name="Machine" Grid.Column="1" Grid.Row="1" Padding="2" Margin="{StaticResource ColumnMargin}" 
+                         HorizontalContentAlignment="Stretch"
+                         Controls:TextBoxHelper.ClearTextButton="False"
+                         Controls:TextBoxHelper.IsWaitingForData="True"
+                         Controls:TextBoxHelper.UseFloatingWatermark="False"
+                         Controls:TextBoxHelper.Watermark="enter the server name"
+                         Controls:TextBoxHelper.WatermarkAlignment="Left"
+                         SpellCheck.IsEnabled="False"
+                         ToolTip="Enter the real name of the machine, for example: dev01devaos"/>
+
+
+                <TextBox x:Name="EndPoint" Grid.Column="2" Grid.Row="1" Padding="2" Margin="{StaticResource ColumnMargin}"
+                         HorizontalContentAlignment="Stretch"
+                         Controls:TextBoxHelper.ClearTextButton="False"
+                         Controls:TextBoxHelper.IsWaitingForData="True"
+                         Controls:TextBoxHelper.UseFloatingWatermark="False"
+                         Controls:TextBoxHelper.Watermark="enter the uri for the machine"
+                         Controls:TextBoxHelper.WatermarkAlignment="Left"
+                         SpellCheck.IsEnabled="False"
+                         ToolTip="Set the endpoint, for example: sandbox.ax.dynamics.com or sandbox.operations.dynamics.com"/>
+                <Button x:Name="AddEndpoint" Grid.Column="3" Grid.Row="1"  Width="32" Margin="{StaticResource ControlMargin}" Click="AddEndpoint_Click" ToolTip="Add new endpoint" >
+                    <iconPacks:Modern Width="20" Height="20" Kind="EditAdd" />
+                </Button>
+                <Button x:Name="SaveEndpoint" Grid.Column="4" Grid.Row="1"  Width="32" Margin="{StaticResource ControlMargin}" Click="SaveEndpoint_Click" ToolTip="Save changes">
+                    <iconPacks:MaterialLight Width="20" Height="20" Kind="ContentSave" />
+                </Button>
+                <Button x:Name="RemoveEndpoint" Grid.Column="5" Grid.Row="1"  Width="32" Margin="{StaticResource ControlMargin}" Click="RemoveEndpoint_Click" ToolTip="Delete selected endpoint">
+                    <iconPacks:MaterialLight Width="20" Height="20" Kind="Delete" />
+                </Button>
+               </Grid>
+            <DataGrid x:Name="MachineDataGrid"
+                Padding="4"
+                BorderThickness="1"
+                Margin="{StaticResource ColumnMargin}"    
+                Style="{DynamicResource MetroDataGrid}"
+                AutoGenerateColumns="False" Grid.Column="0" Grid.Row="2"
+                ScrollViewer.CanContentScroll="True" 
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                SelectionChanged="MachineDataGrid_SelectionChanged"
+                ItemsSource="{Binding AX7Endpoints}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name, Mode=OneWay}"     Header="Name" Width="Auto"/>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Machine, Mode=OneWay}"  Header="Machine" Width="Auto"/>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding EndPointURI, Mode=OneWay}" Header="Endpoint" Width="Auto"/>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding URI, Mode=OneWay}"      Header="Uri" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            </Grid>    
+    </Border>
+</Page>

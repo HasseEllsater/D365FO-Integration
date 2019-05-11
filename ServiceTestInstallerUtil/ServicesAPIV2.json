@@ -1,0 +1,27 @@
+{
+  "Services": [
+    {
+      "Group": "MonitoringAndDiagnosticsServices",
+      "Service": "AvailabilityService",
+      "Method": "getAvailabilty",
+      "CallPath": "MonitoringAndDiagnosticsServices/AvailabilityService/getAvailabilty",
+      "UseParameters": 1,
+      "Arguments": [
+        {
+          "Parameter": "password",
+          "Value": ""
+        },
+        {
+          "Parameter": "testname",
+          "Value": ""
+        },
+        {
+          "Parameter": "resultFormatStr",
+          "Value": ""
+        }
+      ],
+      "JSONSchema": null,
+      "ValidationDirection": 0
+    }
+ ]
+}

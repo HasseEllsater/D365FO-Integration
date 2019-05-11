@@ -1,0 +1,209 @@
+﻿<Page x:Class="CustomServiceTestUtil.Views.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:metro="clr-namespace:MahApps.Metro;assembly=MahApps.Metro"
+      Title="Configure Settings"
+      d:DesignHeight="650"
+      d:DesignWidth="600"
+      Style="{DynamicResource PageStyle}"
+      Loaded="Page_Loaded"
+      mc:Ignorable="d">
+    
+    <Border Margin="10">
+        <StackPanel MinHeight="650">
+            <Grid>
+
+                <iconPacks:PackIconModern Width="48"
+                                       Height="48"
+                                       Margin="10"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Top"
+                                       Foreground="{DynamicResource AccentBaseColorBrush}"
+                                       Kind="Settings" />
+                
+                <Canvas Grid.Column="0" Grid.Row="0" Width="145" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Rectangle
+                    Width="145"
+                    Height="60"
+                    Fill="{DynamicResource AccentBaseColorBrush}"
+                />
+                <TextBlock Text="SETTINGS"
+                FontSize="32"
+                Margin="8"
+                Foreground="{DynamicResource IdealForegroundColorBrush}"   
+                FontWeight="Light"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                />
+                </Canvas>
+
+            </Grid>
+            <Label Padding="2" Margin="{StaticResource ControlMargin}" Content="Authentication settings" FontWeight="Thin" FontSize="18"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="0" Grid.Row="0" Content="AAD Tenant name"/>
+                <Label Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="1" Grid.Row="0" Content="Authorization endpoint"/>
+                <TextBox x:Name="AADTenant" Padding="2" Grid.Column="0" Grid.Row="1" Margin="{StaticResource ControlMargin}" 
+                         HorizontalContentAlignment="Stretch"
+                         Controls:TextBoxHelper.ClearTextButton="False"
+                         Controls:TextBoxHelper.IsWaitingForData="True"
+                         Controls:TextBoxHelper.UseFloatingWatermark="False"
+                         Controls:TextBoxHelper.Watermark="enter the AAD tenant, for example: mydomain.se"
+                         Controls:TextBoxHelper.WatermarkAlignment="Left"
+                         SpellCheck.IsEnabled="False"
+                         ToolTip="Enter the AAD tenant, for example mycompany.se"/>
+                <TextBox x:Name="AuthorizationEndpoint" Padding="2" Grid.Column="1" Grid.Row="1" Margin="{StaticResource ControlMargin}" 
+                         HorizontalContentAlignment="Stretch"
+                         Controls:TextBoxHelper.ClearTextButton="False"
+                         Controls:TextBoxHelper.IsWaitingForData="True"
+                         Controls:TextBoxHelper.UseFloatingWatermark="False"
+                         Controls:TextBoxHelper.Watermark="enter the authorization endpoint"
+                         Controls:TextBoxHelper.WatermarkAlignment="Left"
+                         SpellCheck.IsEnabled="False"
+                         ToolTip="Enter the url to your authorization point, for example: https://login.microsoftonline.com, this is the address of the authority to issue token"/>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+ 
+                <Label Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="1" Grid.Row="1" Content="Web client app id"/>
+                
+                <TextBox x:Name="WebClientAppId" Margin="{StaticResource ControlMargin}"
+                         HorizontalContentAlignment="Stretch"
+                         Controls:TextBoxHelper.ClearTextButton="False"
+                         Controls:TextBoxHelper.IsWaitingForData="True"
+                         Controls:TextBoxHelper.UseFloatingWatermark="False"
+                         Controls:TextBoxHelper.Watermark="enter the Azure web client app id"
+                         Controls:TextBoxHelper.WatermarkAlignment="Left"
+                         SpellCheck.IsEnabled="False"
+                         ToolTip="Enter the web client app id from your Azure settings, this is the identifier of the client requesting the token"
+                         Grid.Column="0" Grid.Row="2" />
+                <Label Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="0" Grid.Row="3" Content="Client secret key"/>
+                <TextBox x:Name="AADKey" Margin="{StaticResource ControlMargin}"
+                             HorizontalContentAlignment="Stretch"
+                             Controls:TextBoxHelper.ClearTextButton="False"
+                             Controls:TextBoxHelper.IsWaitingForData="True"
+                             Controls:TextBoxHelper.UseFloatingWatermark="False"
+                             Controls:TextBoxHelper.Watermark="enter the client secret key"
+                             Controls:TextBoxHelper.WatermarkAlignment="Left"
+                             SpellCheck.IsEnabled="False"
+                             ToolTip="Enter the secure secret client key from your Azure settings, this is the key used to request a token"
+                             Grid.Column="0" Grid.Row="4"/>
+                <Label Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="0" Grid.Row="5" Content="Timeout"/>
+                <Controls:NumericUpDown x:Name="TimeOut" Grid.Column="0" Grid.Row="6"
+                                    Padding="2" Margin="{StaticResource ControlMargin}"
+                                    Width="100" HorizontalAlignment="Left"
+                                    HasDecimals="{Binding ElementName=HasDecimalsCheckBox, Path=IsChecked, Mode=TwoWay}"
+                                    IsEnabled="True"
+                                    IsReadOnly="{Binding ElementName=ReadOnlyCheck, Path=IsChecked, Mode=TwoWay}"
+                                    Maximum="10"
+                                    Minimum="0"
+                                    TextAlignment="Left"
+                                    Value="5"/>
+             </Grid>
+
+
+            <Label Padding="2" Margin="{StaticResource ControlMargin}" Content="Document folders" FontWeight="Thin" FontSize="18"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>    
+            <TextBox x:Name="schemaFolder" Margin="{StaticResource ControlMargin}"
+                             HorizontalContentAlignment="Stretch"
+                             SpellCheck.IsEnabled="False" IsEnabled="False"
+                             ToolTip="The schema files are stored here" Grid.Column="0" Grid.Row="0"/>
+
+            <TextBox x:Name="responseFolder" Margin="{StaticResource ControlMargin}"
+                            HorizontalContentAlignment="Stretch"
+                            SpellCheck.IsEnabled="False" IsEnabled="False"
+                            ToolTip="The response files are stored here" Grid.Column="0" Grid.Row="1"/>
+                
+            <TextBox x:Name="validationFolder" Margin="{StaticResource ControlMargin}"
+                            HorizontalContentAlignment="Stretch"
+                            SpellCheck.IsEnabled="False" IsEnabled="False"
+                            ToolTip="The schema verification results are stored here" Grid.Column="0" Grid.Row="2"/>
+             </Grid>
+
+            <Label Padding="2" Margin="{StaticResource ControlMargin}" Content="Color and theme" FontWeight="Thin" FontSize="18"/>
+            <Controls:ToggleSwitch x:Name="OverrideColorSettings"
+                                   Margin="{StaticResource ControlMargin}" FontSize="12"
+                                   IsChecked="False"
+                                   OffLabel="Use windows default settings"
+                                   OnLabel="Customize accent colors"
+                                   Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" Click="OverrideColorSettings_Click"/>
+
+            <Label x:Name="CustomizationLabel" Padding="2" Margin="{StaticResource ControlMargin}" Content="Define custom Accent or special color for Accent" Visibility="Collapsed"/>
+            <Controls:ToggleSwitch x:Name="AccentSelection"
+                                   Margin="{StaticResource ControlMargin}" FontSize="12"
+                                   IsChecked="True"
+                                   OffLabel="Use custom accent color"
+                                   OnLabel="Use windows accent color"
+                                   Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" Click="AccentSelection_Click" Visibility="Collapsed"/>
+            
+            <Grid x:Name="CustomizationGrid" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+         
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" x:Name="AccentsLabel" Text="Windows Accents" VerticalAlignment="Center" Margin="{StaticResource ControlMargin}" />
+                <TextBlock Grid.Column="0" Grid.Row="0" x:Name="ColorsLabel" Text="Custom Colors" VerticalAlignment="Center" Margin="{StaticResource ControlMargin}" />
+
+                <ComboBox x:Name="AccentSelector" Grid.Column="0" Grid.Row="1" Width="200" HorizontalAlignment="Left"
+                              Margin="{StaticResource ControlMargin}"
+                              SelectionChanged="AccentSelectionChanged"
+                              ItemsSource="{x:Static metro:ThemeManager.Accents}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                <ComboBox x:Name="ColorsSelector" Grid.Column="0" Grid.Row="1" Width="200" HorizontalAlignment="Left"
+                              Margin="{StaticResource ControlMargin}"
+                              SelectionChanged="ColorsSelectorOnSelectionChanged"
+                              ItemsSource="{Binding Colors}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Key}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+            </Grid>
+         
+        </StackPanel>
+    </Border>
+</Page>

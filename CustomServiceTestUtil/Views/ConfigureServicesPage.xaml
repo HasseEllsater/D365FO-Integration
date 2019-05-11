@@ -1,0 +1,152 @@
+﻿<Page x:Class="CustomServiceTestUtil.Views.ConfigureServicesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+      Title="Configure Services"
+      d:DesignHeight="500"
+      d:DesignWidth="900"
+      Style="{DynamicResource PageStyle}"
+      Loaded="Page_Loaded" Unloaded="Page_Unloaded"
+      mc:Ignorable="d">
+    
+    <Border Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            
+                <iconPacks:PackIconModern Width="48" Grid.Row="0"
+                                       Height="48"
+                                       Margin="10"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Top"
+                                       Foreground="{DynamicResource AccentBaseColorBrush}"
+                                       Kind="Cogs" />
+            <Canvas Grid.Column="0" Grid.Row="0" Width="145" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle
+                    Width="145"
+                    Height="60"
+                    Fill="{DynamicResource AccentBaseColorBrush}"
+                />
+                <TextBlock Text="SERVICES"
+                FontSize="32"
+                Margin="8"
+                Foreground="{DynamicResource IdealForegroundColorBrush}"  
+                FontWeight="Light"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                />
+            </Canvas>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Label Grid.Column="0" Grid.Row="0" Padding="2" Margin="{StaticResource ColumnMargin}" Content="Service Group"/>
+                <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Padding="2" Margin="{StaticResource ColumnMargin}" Content="Schema used to validate the service call or response"/>
+                <Label Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Padding="2" Margin="{StaticResource ColumnMargin}" Content="Select if a call or response should be validated"/>
+                <Label Grid.Column="1" Grid.Row="0" Padding="2" Margin="{StaticResource ColumnMargin}" Content="Service Name"/>
+                <Label Grid.Column="2" Grid.Row="0" Padding="2" Margin="{StaticResource ColumnMargin}" Content="Service Method"/>
+                <Label Grid.Column="3" Grid.Row="0" Padding="2" Margin="{StaticResource ColumnMargin}" Content="Parameter handling"/>
+
+                <TextBox x:Name="Group" Grid.Column="0" Grid.Row="1" Padding="2" Margin="{StaticResource ColumnMargin}"
+                         HorizontalContentAlignment="Stretch"
+                         Controls:TextBoxHelper.ClearTextButton="False"
+                         Controls:TextBoxHelper.IsWaitingForData="True"
+                         Controls:TextBoxHelper.UseFloatingWatermark="False"
+                         Controls:TextBoxHelper.Watermark="enter the service group name..."
+                         Controls:TextBoxHelper.WatermarkAlignment="Left"
+                         SpellCheck.IsEnabled="False"
+                         ToolTip="Enter the name of the service group where the service exist"/>
+                <TextBox x:Name="Service" Grid.Column="1" Grid.Row="1" Padding="2" Margin="{StaticResource ColumnMargin}"
+                         HorizontalContentAlignment="Stretch"
+                         Controls:TextBoxHelper.ClearTextButton="False"
+                         Controls:TextBoxHelper.IsWaitingForData="True"
+                         Controls:TextBoxHelper.UseFloatingWatermark="False"
+                         Controls:TextBoxHelper.Watermark="enter the service name..."
+                         Controls:TextBoxHelper.WatermarkAlignment="Left"
+                         SpellCheck.IsEnabled="False"
+                         ToolTip="Enter the name of the web service"/>
+                
+                <TextBox x:Name="Method" Grid.Column="2" Grid.Row="1" Padding="2" Margin="{StaticResource ColumnMargin}"
+                         HorizontalContentAlignment="Stretch"
+                         Controls:TextBoxHelper.ClearTextButton="False"
+                         Controls:TextBoxHelper.IsWaitingForData="True"
+                         Controls:TextBoxHelper.UseFloatingWatermark="False"
+                         Controls:TextBoxHelper.Watermark="enter the name of the service method..."
+                         Controls:TextBoxHelper.WatermarkAlignment="Left"
+                         SpellCheck.IsEnabled="False"
+                         ToolTip="Enter the name of the method in the service"/>
+
+
+                <ComboBox x:Name="schema"  Grid.Column="0" Grid.Row="3" Padding="2" Margin="{StaticResource ColumnMargin}" Grid.ColumnSpan="2"
+                          Controls:TextBoxHelper.UseFloatingWatermark="False"
+                          Controls:TextBoxHelper.Watermark="available schemas..."
+                          />
+                <RadioButton x:Name="get" Content="Response" Grid.Column="2" Grid.Row="3" Padding="2" Margin="{StaticResource ColumnMargin}" HorizontalAlignment="Left" Grid.ColumnSpan="1" Click="Get_Click"/>
+                <RadioButton x:Name="set" Content="Call" Grid.Column="2" Grid.Row="3" Padding="2" Margin="{StaticResource ColumnMargin}" HorizontalAlignment="Center" Width="60" Grid.ColumnSpan="1" Click="Set_Click"/>
+                <RadioButton x:Name="notUsed" Content="No validation" Grid.Column="2" Grid.Row="3" Padding="2" Margin="{StaticResource ColumnMargin}" HorizontalAlignment="Right" Grid.ColumnSpan="1" Click="NotUsed_Click"/>
+
+                <ComboBox x:Name="Parameters" Grid.Column="3" Grid.Row="1" Padding="2" Grid.ColumnSpan="4" Margin="{StaticResource ColumnMargin}"
+                          Controls:TextBoxHelper.UseFloatingWatermark="False"
+                          Controls:TextBoxHelper.Watermark="select how to use parameters..."
+                          ToolTip="Select the type of parameters for the method call" SelectionChanged="Parameters_SelectionChanged"/>
+                <Button x:Name="AddParameters" Grid.Column="7" Grid.Row="1"  Width="32" Margin="{StaticResource ControlMargin}" IsEnabled="False" Click="AddParameters_Click" ToolTip="Setup parameters for selected service">
+                    <iconPacks:Material Width="20" Height="20" Kind="Json" />
+                </Button>
+                <Button x:Name="AddMethod" Grid.Column="5" Grid.Row="3"  Width="32" Margin="{StaticResource ControlMargin}" ToolTip="Add new custom service" Click="AddMethod_Click">
+                    <iconPacks:Modern Width="20" Height="20" Kind="EditAdd"/>
+                </Button>
+                <Button x:Name="SaveMethod" Grid.Column="6" Grid.Row="3"  Width="32" Margin="{StaticResource ControlMargin}" ToolTip="Save changes to selected service configuration" Click="SaveMethod_Click">
+                    <iconPacks:MaterialLight Width="20" Height="20" Kind="ContentSave" />
+                </Button>
+                <Button x:Name="RemoveMethod" Grid.Column="7" Grid.Row="3"  Width="32" Margin="{StaticResource ControlMargin}" ToolTip="Remove selected service configuration" Click="RemoveMethod_Click">
+                    <iconPacks:MaterialLight Width="20" Height="20" Kind="Delete" />
+                </Button>            
+            
+            </Grid>
+            
+            
+            <DataGrid x:Name="ServiceDataGrid" 
+                    BorderThickness="1" 
+                    Padding="4"
+                    SelectionChanged="ServiceDataGrid_SelectionChanged"
+                    AutoGenerateColumns="False" Grid.Column="0" Grid.Row="2"
+                    Margin="{StaticResource ColumnMargin}"  
+                    Style="{DynamicResource MetroDataGrid}"
+                    ItemsSource="{Binding ServicesAPI}"
+                    ScrollViewer.CanContentScroll="True" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Group, Mode=OneWay}" Header="Group" Width="Auto"/>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Service, Mode=OneWay}" Header="Service" Width="Auto"/>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Method, Mode=OneWay}" Header="Method" Width="Auto"/>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding UseParameters, Mode=OneWay}" Header="Parameter" Width="Auto"/>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding JSONSchema, Mode=OneWay}" Header="Schema" Width="Auto"/>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding ValidationDirection, Mode=OneWay}" Header="Validate" Width="Auto"/>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding CallPath, Mode=OneWay}" Header="CallPath" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Border>
+</Page>

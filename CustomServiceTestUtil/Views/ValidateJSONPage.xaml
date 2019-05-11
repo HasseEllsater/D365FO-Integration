@@ -1,0 +1,69 @@
+﻿<Page x:Class="CustomServiceTestUtil.Views.ValidateJSONPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Title="JSON Editor"
+      d:DesignHeight="500"
+      d:DesignWidth="600"
+      Style="{DynamicResource PageStyle}"
+      mc:Ignorable="d"
+      Loaded="Page_Loaded" > 
+
+    <Border Margin="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Canvas Grid.Column="0" Grid.Row="0" Width="150" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle
+                    Width="150"
+                    Height="60"
+                    Fill="{DynamicResource AccentBaseColorBrush}"
+                />
+                <TextBlock Text="VALIDATE"
+                FontSize="32"
+                Margin="8"
+                Foreground="{DynamicResource IdealForegroundColorBrush}"  
+                FontWeight="Light"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                />
+            </Canvas>
+
+            <iconPacks:PackIconModern Grid.Column="2" Grid.Row="0" Width="48"
+                                    Height="48"
+                                    Margin="0,10,10,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Foreground="{DynamicResource AccentBaseColorBrush}"
+                                    Kind="Magnify" />
+
+            <Label Grid.Column="0" Grid.Row="1"  Padding="2" Margin="{StaticResource ControlMargin}" Content="Validate JSON Response with schema" FontSize="18" FontWeight="Light" />
+
+            <TextBox Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" x:Name="ValidationResult" 
+                        Padding="2" Margin="{StaticResource ControlMargin}" 
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Visible"
+                        Background="White"
+                        Foreground="Black" >
+            </TextBox>
+            
+            <Button x:Name="SaveValidationResult" Grid.Column="2" Grid.Row="3" 
+                        Content="Save validation result"   Margin="{StaticResource ControlMargin}"  
+                        Width="Auto" Click="SaveValidationResult_Click" />
+        </Grid>
+  
+    </Border>
+</Page>

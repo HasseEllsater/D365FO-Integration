@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="JSONFileFilter" xml:space="preserve">
+    <value>JSON Files (*.json)|*.json</value>
+    <comment>File dialog filter for JSONfiles</comment>
+  </data>
+  <data name="JSONSuffix" xml:space="preserve">
+    <value>.json</value>
+    <comment>JSON file suffix</comment>
+  </data>
+  <data name="Application" xml:space="preserve">
+    <value>Application</value>
+    <comment>Event log</comment>
+  </data>
+  <data name="CallingWithFile" xml:space="preserve">
+    <value>Calling with file {0}</value>
+    <comment>Output text for call with file</comment>
+  </data>
+  <data name="CallingWithoutParameters" xml:space="preserve">
+    <value>Calling without parameters</value>
+    <comment>Output text for call without parameters</comment>
+  </data>
+  <data name="CallingWithParameters" xml:space="preserve">
+    <value>Calling with parameters: {0} {1}</value>
+    <comment>Output text for call with parameters</comment>
+  </data>
+  <data name="CallPerformed" xml:space="preserve">
+    <value>{0} Called from test tool</value>
+    <comment>Output status call done</comment>
+  </data>
+  <data name="EndPoints" xml:space="preserve">
+    <value>TestEndPointsV2.json</value>
+    <comment>Endpoints</comment>
+  </data>
+  <data name="JSONSerialized" xml:space="preserve">
+    <value>\nJSON serialized to string:\n{0}</value>
+    <comment>JSON Serialized to string</comment>
+  </data>
+  <data name="MainInstructions" xml:space="preserve">
+    <value>Pick service, server, options and parameters and JSON File (if needed) for your call. Click the button Call Service to make the call</value>
+    <comment>General instructions</comment>
+  </data>
+  <data name="SelectAnOption" xml:space="preserve">
+    <value>Select the option to use for the call</value>
+    <comment>No call option is selected</comment>
+  </data>
+  <data name="ServiceAPI" xml:space="preserve">
+    <value>ServicesAPIV2.json</value>
+    <comment>API objekt</comment>
+  </data>
+  <data name="TestServerSettings" xml:space="preserve">
+    <value>TestServerSettings.json</value>
+    <comment>Server inställningar</comment>
+  </data>
+  <data name="TestServiceEvent" xml:space="preserve">
+    <value>iStone test service</value>
+    <comment>Event log entry</comment>
+  </data>
+  <data name="WarningTitle" xml:space="preserve">
+    <value>Warning</value>
+    <comment>Warning dialog title</comment>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome {0}</value>
+    <comment>Welcome user</comment>
+  </data>
+  <data name="ConfigurationError" xml:space="preserve">
+    <value>Configuration error</value>
+    <comment>Duplicate machine configured</comment>
+  </data>
+  <data name="DuplicateMachine" xml:space="preserve">
+    <value>This machine is already configured ({0} - {1}), check your input and try again</value>
+    <comment>Duplicate machine configured</comment>
+  </data>
+  <data name="ConfirmAction" xml:space="preserve">
+    <value>Confirm action</value>
+    <comment>Confirm current action</comment>
+  </data>
+  <data name="ConfirmRemoval" xml:space="preserve">
+    <value>The selected endpoint setup will be permanently removed ({0}) Continue?</value>
+    <comment>Confirm removal</comment>
+  </data>
+  <data name="ConfirmRemovalOfParm" xml:space="preserve">
+    <value>The parameter {0} with value {1} will be permanently removed, continue?</value>
+    <comment>Confirm removal of parameter</comment>
+  </data>
+  <data name="BaseURLString" xml:space="preserve">
+    <value>https://{0}.{1}</value>
+    <comment>Base format for URL</comment>
+  </data>
+  <data name="OptionJSONFile" xml:space="preserve">
+    <value>JSON file</value>
+    <comment>JSON file as input</comment>
+  </data>
+  <data name="OptionNoParameters" xml:space="preserve">
+    <value>No parameters</value>
+    <comment>No parameters as input</comment>
+  </data>
+  <data name="OptionParameters" xml:space="preserve">
+    <value>Set parameters</value>
+    <comment>Parameters as input</comment>
+  </data>
+  <data name="ConfirmSaveJSON" xml:space="preserve">
+    <value>The JSON string is modified, do you wish to save it?</value>
+    <comment>Confirm save the JSON string</comment>
+  </data>
+  <data name="NoSchema" xml:space="preserve">
+    <value />
+    <comment>Default value when no schema is set</comment>
+  </data>
+  <data name="CallTiming" xml:space="preserve">
+    <value>The call to the service finished in {0} seconds</value>
+    <comment>Measure the call</comment>
+  </data>
+  <data name="HTTPStatusCode" xml:space="preserve">
+    <value>HTTP status code: </value>
+    <comment>HTTP code</comment>
+  </data>
+  <data name="ProcessingFailure" xml:space="preserve">
+    <value>Failure processing : </value>
+    <comment>Failure</comment>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Request: </value>
+    <comment>Request message</comment>
+  </data>
+  <data name="Response" xml:space="preserve">
+    <value>Response: </value>
+    <comment>Response message</comment>
+  </data>
+  <data name="InputFileSerialized" xml:space="preserve">
+    <value>- Input file successfully serialized to JSON string</value>
+    <comment>Serialized text file to JSON</comment>
+  </data>
+  <data name="TemJSONFIle" xml:space="preserve">
+    <value>{0}\tmpResponse.json</value>
+    <comment>Temporary</comment>
+  </data>
+  <data name="NotPossibleToCall" xml:space="preserve">
+    <value>Select all required parameters to test a service: 
+
+1. Service 
+2. Machine
+3. Input option</value>
+    <comment>No possible to call service</comment>
+  </data>
+  <data name="OpenTheResponse" xml:space="preserve">
+    <value>Click the response button to open the response</value>
+    <comment>Response returned</comment>
+  </data>
+  <data name="SchemaValidation" xml:space="preserve">
+    <value>{0} Validation on: {1}</value>
+    <comment>Schema validation direction information</comment>
+  </data>
+  <data name="SchemaPathMissing" xml:space="preserve">
+    <value>Schema path is missing, set up the path to the schemas in the application settings</value>
+    <comment>Schema path not setup</comment>
+  </data>
+  <data name="ResponseTmpFile" xml:space="preserve">
+    <value>tmpResponse.json</value>
+    <comment>Current response temporary file</comment>
+  </data>
+  <data name="ValidationOK" xml:space="preserve">
+    <value>Response is validated ok against schema {0} {1}</value>
+    <comment>Response is validated ok</comment>
+  </data>
+  <data name="ConfirmRemovalOfService" xml:space="preserve">
+    <value>Confirm removal of {0}</value>
+    <comment>Confirm removal of selected service</comment>
+  </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>CustomServiceTestUtil</value>
+    <comment>The name of the application</comment>
+  </data>
+  <data name="NoCallParameterSelected" xml:space="preserve">
+    <value>Select if the service should be called with parameters, file or none</value>
+  </data>
+  <data name="SchemaPathInvalid" xml:space="preserve">
+    <value>The directory setup for the schemas does not exist, go to settings and set a valid path</value>
+    <comment>Path does not exist for schemas</comment>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+
+  <data name="CallService" xml:space="preserve">
+    <value>Call</value>
+    <comment>Enum description for call service</comment>
+  </data>
+  <data name="ServiceResponse" xml:space="preserve">
+    <value>Response</value>
+    <comment>Enum description for response from service</comment>
+  </data>
+  <data name="EasterEgg" xml:space="preserve">
+    <value>Varning, vissa bilder kan vara stötande, känsliga personer avråds att fortsätta, vill du verkligen se eländet?</value>
+    <comment>Tribute to herr Dr and Mackan</comment>
+  </data>
+  <data name="json_egi_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\json_egi_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FileSaved" xml:space="preserve">
+    <value>File is created and saved</value>
+    <comment>A file is created and saved</comment>
+  </data>
+  <data name="ResponseFolder" xml:space="preserve">
+    <value>Response</value>
+    <comment>Saved responses</comment>
+  </data>
+  <data name="ResponseSaved" xml:space="preserve">
+    <value>The response from the method call is saved to: "{0}" {1}File: "{2}"</value>
+    <comment>Successfully saved response</comment>
+  </data>
+  <data name="ValidationFolder" xml:space="preserve">
+    <value>Validation</value>
+    <comment>Saved validations</comment>
+  </data>
+  <data name="ValidationSaved" xml:space="preserve">
+    <value>The validation result from the method call is saved to: "{0}" {1}File: "{2}"</value>
+    <comment>Validation result is saved</comment>
+  </data>
+  <data name="WrongUseOfFunction" xml:space="preserve">
+    <value>Wrong use of this function {0}</value>
+    <comment>Bad function call</comment>
+  </data>
+  <data name="MyDocumentsFolderName" xml:space="preserve">
+    <value>Custom Service Test Util</value>
+    <comment>Application folder in my documents</comment>
+  </data>
+  <data name="SchemaFolder" xml:space="preserve">
+    <value>Schema</value>
+    <comment>Schema folder name</comment>
+  </data>
+  <data name="ValidationFailed" xml:space="preserve">
+    <value>{0}The schema validation failed - The service will not be called</value>
+    <comment>Schema validation failed, no call to service will be done</comment>
+  </data>
+  <data name="SchemaValidationNotPossible" xml:space="preserve">
+    <value>You have configured the service to validate the response with a schema but the schema is not present in the schema directory, add the schema to the folder {0} or remove the validation from the service</value>
+    <comment>Bad configuration</comment>
+  </data>
+</root>
