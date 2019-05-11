@@ -4,4 +4,4 @@ In this repository I want to share tools for D365FO developers. My first project
 
 The communication part of the tool is based on the samples provided by Microsoft. The UI is based on a sample from punker76, see the amazing code samples here https://github.com/punker76/code-samples.
 
-The solution also consist of a installtion program that let you easily distribute the app within your project, endpoints, services and id and keys can be added to simplify for the users that's testing your API.
+The solution also consist of a setup program that let you easily distribute the app within your project, endpoints, services and id and keys can be added to simplify for the users that's testing your API.
