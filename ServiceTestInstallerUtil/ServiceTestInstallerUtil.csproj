@@ -91,9 +91,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CustomServicesBanner.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="ServicesAPIV2.json" />
     <EmbeddedResource Include="TestServerSettings.json" />
   </ItemGroup>
