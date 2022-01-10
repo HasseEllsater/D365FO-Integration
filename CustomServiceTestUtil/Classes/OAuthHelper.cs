@@ -1,7 +1,8 @@
 ﻿using CustomServiceTestUtil;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using System;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AuthenticationUtility
@@ -21,7 +22,9 @@ namespace AuthenticationUtility
         /// <returns>AuthenticationHeaderValue object</returns>
         public static AuthenticationHeaderValue GetValidAuthenticationHeader()
         {
-            return OAuthHelper.ParseAuthenticationHeader(AuthenticationHelper.AuthorizationHeader);
+            Task<string> token = AuthenticationHelper.GetAuthorizationHeader();
+            string header = token.Result;
+            return OAuthHelper.ParseAuthenticationHeader(header);
         }
 
         static AuthenticationHeaderValue ParseAuthenticationHeader(string authorizationHeader)
@@ -37,28 +40,22 @@ namespace AuthenticationUtility
         /// Retrieves an authentication header from the service.
         /// </summary>
         /// <returns>The authentication header for the Web API call.</returns>
-        public static string GetAuthenticationHeader()
+        public static async Task<string> GetAuthenticationHeader()
         {
             ServerSettings serverSetting = Settings.GetServerSettings();
 
             string aadTenant = string.Format("{0}/{1}", serverSetting.AzureAuthEndpoint, serverSetting.AADTenant);
             string aadResource = serverSetting.Ax7Endpoint;
 
-            AuthenticationContext authenticationContext = new AuthenticationContext(aadTenant);
-            AuthenticationResult authenticationResult = null;
+            IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(serverSetting.WebAppId)
+            .WithClientSecret(serverSetting.WebAADKey)
+            .WithAuthority(new Uri(aadTenant))
+            .Build();
 
-            try
-            {
-                var credential = new ClientCredential(serverSetting.WebAppId, serverSetting.WebAADKey);
-                authenticationResult = authenticationContext.AcquireTokenAsync(aadResource, credential).Result;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
+            string[] scopes = new string[] { $"{aadResource}/.default" };
 
-            // Create and get JWT token
-            return authenticationResult.CreateAuthorizationHeader();
+            AuthenticationResult result = await app.AcquireTokenForClient(scopes).ExecuteAsync();
+            return result.CreateAuthorizationHeader();
         }
     }
 }

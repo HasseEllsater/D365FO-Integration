@@ -1,8 +1,8 @@
-﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
+﻿using Microsoft.Identity.Client;
 using System;
 using System.Configuration;
 using System.Net.Http.Headers;
-
+using System.Threading.Tasks;
 namespace CustomServiceTestUtil
 {
     /// <summary>
@@ -25,28 +25,26 @@ namespace CustomServiceTestUtil
         }
 
         /// <summary>
-        /// Property that gets the AuthorizationHeader
+        /// Method that gets the AuthorizationHeader
         /// </summary>
-        public static string AuthorizationHeader
+        public static async Task<string> GetAuthorizationHeader()
         {
-            get
-            {
-                ServerSettings serverSettings = Settings.GetServerSettings();
-                if (string.IsNullOrEmpty(authorizationHeader) || DateTime.UtcNow.AddSeconds(60) >= AuthenticationResult.ExpiresOn)
-                {
-                    UriBuilder uri = new UriBuilder(serverSettings.AzureAuthEndpoint)
-                    {
-                        Path = serverSettings.AADTenant
-                    };
 
-                    AuthenticationContext authenticationContext = new AuthenticationContext(uri.ToString());
-                    var credential = new ClientCredential(serverSettings.WebAppId, serverSettings.WebAADKey);
-                    AuthenticationResult = authenticationContext.AcquireTokenAsync(serverSettings.Ax7Endpoint, credential).Result;
-                    authorizationHeader = AuthenticationResult.CreateAuthorizationHeader();
-                }
+            ServerSettings serverSetting = Settings.GetServerSettings();
 
-                return authorizationHeader;
-            }
+            string aadTenant = string.Format("{0}/{1}", serverSetting.AzureAuthEndpoint, serverSetting.AADTenant);
+            string aadResource = serverSetting.Ax7Endpoint;
+
+            IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(serverSetting.WebAppId)
+            .WithClientSecret(serverSetting.WebAADKey)
+            .WithAuthority(new Uri(aadTenant))
+            .Build();
+
+            string[] scopes = new string[] { $"{aadResource}/.default" };
+
+            AuthenticationResult result = await app.AcquireTokenForClient(scopes).ExecuteAsync();
+            authorizationHeader = result.CreateAuthorizationHeader();
+            return authorizationHeader;
         }
 
         /// <summary>
@@ -55,11 +53,13 @@ namespace CustomServiceTestUtil
         /// <returns>AuthenticationHeaderValue object</returns>
         public static AuthenticationHeaderValue GetValidAuthenticationHeader(bool _dropAuthHeader = false)
         {
-            if(_dropAuthHeader == true)
+            if (_dropAuthHeader == true)
             {
                 AuthenticationHelper.DropAuthheader = _dropAuthHeader;
             }
-            return AuthenticationHelper.ParseAuthenticationHeader(AuthenticationHelper.AuthorizationHeader);
+            Task<string> autHeader = GetAuthorizationHeader();
+            string header = autHeader.Result;
+            return AuthenticationHelper.ParseAuthenticationHeader(header);
         }
 
         static AuthenticationHeaderValue ParseAuthenticationHeader(string authorizationHeader)

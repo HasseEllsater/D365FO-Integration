@@ -21,7 +21,7 @@ namespace CustomServiceTestUtil
         {
          
         }
-        public void callServiceSync(string _json,  DateTime _begin, string _serviceMethod)
+        public async void callServiceSync(string _json,  DateTime _begin, string _serviceMethod)
         {
             begin = _begin;
             serviceMethod = _serviceMethod;
@@ -35,7 +35,7 @@ namespace CustomServiceTestUtil
                 };
 
                 var request = HttpWebRequest.Create(serviceUri.Uri);
-                request.Headers[OAuthHelper.OAuthHeader] = OAuthHelper.GetAuthenticationHeader();
+                request.Headers[OAuthHelper.OAuthHeader] = await OAuthHelper.GetAuthenticationHeader();
                 request.Method = "POST";
 
                 using (var stream = request.GetRequestStream())
@@ -162,14 +162,14 @@ namespace CustomServiceTestUtil
             }
             return response;
         }
-        private void postJSONStream(string _json)
+        private async void postJSONStream(string _json)
         {
             try
             {
                 ServerSettings serverSettings = Settings.GetServerSettings();
                 string servicePath = string.Format("{0}{1}{2}", serverSettings.Ax7Endpoint, App.CustomServices, serviceMethod);
                 var request = HttpWebRequest.Create(servicePath);
-                request.Headers[OAuthHelper.OAuthHeader] = OAuthHelper.GetAuthenticationHeader();
+                request.Headers[OAuthHelper.OAuthHeader] = await OAuthHelper.GetAuthenticationHeader();
                 request.Method = "POST";
 
                 StreamWriter requestWriter = new StreamWriter(request.GetRequestStream());
