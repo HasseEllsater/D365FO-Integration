@@ -157,7 +157,6 @@ namespace CustomServiceTestUtil.Views
             if (OptionsCombo.SelectedIndex == -1)
             {
                 SaveJSONFileLabel.Visibility        = System.Windows.Visibility.Collapsed;
-                SaveJSONFileParms.Visibility        = System.Windows.Visibility.Collapsed;
                 SetParametersButton.IsEnabled       = false;
                 SetParametersButton.Visibility      = System.Windows.Visibility.Hidden;
                 return;
@@ -170,7 +169,6 @@ namespace CustomServiceTestUtil.Views
         private void ToggleParmInput(CallAction _action)
         {
             SaveJSONFileLabel.Visibility = System.Windows.Visibility.Collapsed;
-            SaveJSONFileParms.Visibility = System.Windows.Visibility.Collapsed;
             SetParametersButton.IsEnabled = false;
             SetParametersButton.Visibility = System.Windows.Visibility.Hidden;
 
@@ -183,8 +181,6 @@ namespace CustomServiceTestUtil.Views
             else if(_action == CallAction.File)
             {
                 SaveJSONFileLabel.Visibility = System.Windows.Visibility.Visible;
-                SaveJSONFileParms.Visibility = System.Windows.Visibility.Visible;
-
             }
 
             foreach (Options option in OptionsCombo.Items)

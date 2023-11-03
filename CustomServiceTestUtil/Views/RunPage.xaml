@@ -13,151 +13,178 @@
       Style="{DynamicResource PageStyle}"
       mc:Ignorable="d">
 
-    <Border Margin="10" Height="Auto">
-        <StackPanel Height="Auto">
-            <Grid>
-                <iconPacks:PackIconSimpleIcons Width="48"
-                                       Height="48"
-                                       Margin="10"
-                                       HorizontalAlignment="Right"
-                                       VerticalAlignment="Top"
-                                       Foreground="{DynamicResource AccentBaseColorBrush}"
-                                       Kind="Json" />
+    <Border Margin="8">
+        <Grid Margin="{StaticResource ColumnMargin}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" 
+              Grid.Column="0" 
+              Grid.ColumnSpan="2">
 
-                <Canvas Width="80" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Canvas Width="80" Height="60" Grid.Row="0" Grid.Column="0"
+                    HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Rectangle
-                        Width="80"
-                        Height="60"
-                        Fill="{DynamicResource AccentBaseColorBrush}"
-                    />
+                      Width="80"
+                      Height="60"
+                      Fill="{DynamicResource AccentBaseColorBrush}"/>
                     <TextBlock Text="TEST"
-                   FontSize="32"
-                   Margin="8"
-                   Foreground="{DynamicResource IdealForegroundColorBrush}"
-                   FontWeight="Light"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   />
+                     FontSize="32"
+                     Margin="8"
+                     Foreground="{DynamicResource IdealForegroundColorBrush}"
+                     FontWeight="Light"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"/>
                 </Canvas>
-            </Grid>
-            <Label Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="0" Content="Select a custom service and endpoint" FontSize="18" FontWeight="Light" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="0" Content="Service to test"/>
-                <Label Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="2" Content="Endpoint to test"/>
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <ComboBox x:Name="serviceCombo" Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="0" Text="Service" SelectionChanged="ServiceCombo_SelectionChanged"
-                      Controls:TextBoxHelper.ClearTextButton="True"
-                      Controls:TextBoxHelper.UseFloatingWatermark="False"
-                      Controls:TextBoxHelper.Watermark="select a service to test..." Grid.ColumnSpan="2"/>
+                <iconPacks:PackIconSimpleIcons 
+                Grid.Row="0" Grid.Column="1"
+                Width="48"
+                Height="48"
+                Margin="10"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Foreground="{DynamicResource AccentBaseColorBrush}"
+                Kind="Json" />
 
-                <ComboBox x:Name="MachineCombo" Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="2" 
-                      Controls:TextBoxHelper.ClearTextButton="True"
-                      Controls:TextBoxHelper.UseFloatingWatermark="False"
-                      Controls:TextBoxHelper.Watermark="select endpoint..." Grid.ColumnSpan="3" SelectionChanged="MachineCombo_SelectionChanged"/>
+                <Label Padding="2" Margin="{StaticResource ControlMargin}" 
+                   Grid.Column="0" Grid.Row="1"
+                   Content="Select a custom service and endpoint" FontSize="16" FontWeight="Light" />
             </Grid>
-            <Label Padding="2" Margin="{StaticResource ControlMargin}" Content="Selected endpoint url"/>
-            <Label x:Name="SelectedEndpoint" Padding="2" Margin="{StaticResource ControlMargin}" Content="Not selected..."/>
-            <Label Visibility="Collapsed" x:Name="SchemaLabel" Padding="2" Margin="{StaticResource ControlMargin}" Content="Schema"/>
-            <Label Visibility="Collapsed" x:Name="Schema" Padding="2" Margin="{StaticResource ControlMargin}" />
-
-            <Grid>
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="0" Content="Parameters" FontSize="18" FontWeight="Light" />
-            </Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-
-                <ComboBox x:Name="OptionsCombo" Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="0" Text="Service"
+                <Label Margin="{StaticResource ControlMargin}" Grid.Column="0" Grid.Row="0" Content="Service to test"/>
+                <Label Margin="{StaticResource ControlMargin}" Grid.Column="2" Grid.Row="0" Content="Endpoint to test"/>
+                <ComboBox x:Name="serviceCombo" 
+                      Margin="{StaticResource ControlMargin}" 
+                      Grid.Column="0" 
+                      Grid.Row="1"
+                      Text="Service" 
+                      SelectionChanged="ServiceCombo_SelectionChanged"
                       Controls:TextBoxHelper.ClearTextButton="True"
                       Controls:TextBoxHelper.UseFloatingWatermark="False"
-                      Controls:TextBoxHelper.Watermark="select parameter option..." SelectionChanged="OptionsCombo_SelectionChanged"/>
+                      Controls:TextBoxHelper.Watermark="select a service to test..."/>
 
-                <Button x:Name="SetParametersButton" Grid.Column="1" Margin="4 4 4 0" Padding="2" Width="28" IsEnabled="False" HorizontalAlignment="Left" Visibility="Hidden" Click="SetParametersButton_Click">
-                    <iconPacks:Material Width="20" Height="20" Kind="Json" />
+                <ComboBox x:Name="MachineCombo" 
+                      Margin="{StaticResource ControlMargin}" 
+                      Grid.Row="1"
+                      Grid.Column="2"
+                      Controls:TextBoxHelper.ClearTextButton="True"
+                      Controls:TextBoxHelper.UseFloatingWatermark="False"
+                      Controls:TextBoxHelper.Watermark="select endpoint..." 
+                      SelectionChanged="MachineCombo_SelectionChanged"/>
+
+                <Label Margin="{StaticResource ControlMargin}" 
+                   Grid.Column="0" Grid.Row="2"
+                   Content="Selected endpoint url"/>
+                <Label x:Name="SelectedEndpoint" 
+                   Grid.Column="0" Grid.Row="3"
+                   Margin="{StaticResource ControlMargin}" Content="Not selected..."/>
+
+                <Label Visibility="Collapsed" x:Name="SchemaLabel" 
+                   Grid.Column="0" Grid.Row="4"
+                   Margin="{StaticResource ControlMargin}" Content="Schema"/>
+
+                <Label Visibility="Collapsed" x:Name="Schema" 
+                   Grid.Column="2" Grid.Row="4"
+                   Margin="{StaticResource ControlMargin}" />
+
+                <Label Margin="{StaticResource ControlMargin}" 
+                   Grid.Column="0" Grid.Row="5" 
+                   Content="Parameters" FontSize="16" FontWeight="Light" />
+
+                <ComboBox x:Name="OptionsCombo" Margin="{StaticResource ControlMargin}" 
+                      Grid.Column="0" Grid.Row="6" Text="Service"
+                      Controls:TextBoxHelper.ClearTextButton="True"
+                      Controls:TextBoxHelper.UseFloatingWatermark="False"
+                      Controls:TextBoxHelper.Watermark="select parameter option..." 
+                      SelectionChanged="OptionsCombo_SelectionChanged"/>
+
+                <Button x:Name="SetParametersButton" Grid.Column="1" Grid.Row="6" Width="38" 
+                    IsEnabled="False" HorizontalAlignment="Left" Visibility="Hidden" Click="SetParametersButton_Click">
+                    <iconPacks:Material Width="20" Height="20" Kind="Json"/>
                 </Button>
-
             </Grid>
-
-            <Grid x:Name="SaveJSONFileLabel" Visibility="Collapsed">
+            <Grid x:Name="SaveJSONFileLabel" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Collapsed" >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="45"/>
                 </Grid.ColumnDefinitions>
-                <Label Padding="2" Margin="{StaticResource ControlMargin}" Grid.Column="0" Content="JSON File"/>
-            </Grid>
-
-            <Grid Visibility="Collapsed" x:Name="SaveJSONFileParms">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <TextBox x:Name="JSONFile" Grid.Column="0" Padding="2" Margin="4 4 4 0" IsReadOnly="True" IsEnabled="False"/>
-
-                <Button x:Name="OpenJSONFile" Grid.Column="2" Padding="2" Margin="4 4 4 0" Width="32" HorizontalAlignment="Right" Click="OpenJSONFile_Click">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Margin="{StaticResource ControlMargin}" Grid.Column="0" Grid.Row="0" Content="JSON File"/>
+                <TextBox x:Name="JSONFile" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
+                     Margin="{StaticResource ControlMargin}" IsReadOnly="True" IsEnabled="False"/>
+                <Button x:Name="OpenJSONFile" Grid.Column="3" Width="32" HorizontalAlignment="Center" 
+                    Margin="{StaticResource ControlMargin}" Click="OpenJSONFile_Click">
                     <iconPacks:FontAwesome Width="20" Height="20" Kind="FolderOpenRegular" />
                 </Button>
-
             </Grid>
-   
-            <Label Padding="2" Margin="{StaticResource ControlMargin}" Content="Output" FontSize="18" FontWeight="Light" />
-
-            <DockPanel>
-                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBox x:Name="Output" Grid.Column="0" Grid.Row="0" Padding="2" Margin="{StaticResource ControlMargin}" 
-                     MinHeight="100" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                </Grid>
-                
-                
-            </DockPanel>
-            
-            <Grid VerticalAlignment="Bottom">
+            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+              VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="Output" Grid.Column="0" Grid.Row="0" Padding="2" Margin="{StaticResource ControlMargin}" 
+                     MinHeight="100" VerticalScrollBarVisibility="Auto" 
+                     TextWrapping="Wrap" 
+                     AcceptsReturn="True" 
+                     VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Button x:Name="CallServiceButton" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0" 
-                        Content="Call Service"  Padding="2" Margin="{StaticResource ControlMargin}"  
-                        Width="110" IsEnabled="True" Click="CallServiceButton_Click"/>
+                <Button x:Name="CallServiceButton" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="0" 
+                   Content="Call Service"  Padding="2" Margin="{StaticResource ControlMargin}"  
+                   Width="110" IsEnabled="True" Click="CallServiceButton_Click"/>
 
-                <Button x:Name="OpenResponseButton" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="0" Content="Response..." 
-                        Padding="2" Margin="{StaticResource ControlMargin}" Width="110" Click="EditJSON_Click" 
-                        ToolTip="Open the response" IsEnabled="False"/>
-
+                <Button x:Name="OpenResponseButton" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="0" Content="Response..." 
+                   Padding="2" Margin="{StaticResource ControlMargin}" Width="110" Click="EditJSON_Click" 
+                   ToolTip="Open the response" IsEnabled="False"/>
             </Grid>
-        </StackPanel>
+        </Grid>
     </Border>
 
 </Page>
