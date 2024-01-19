@@ -9,3 +9,5 @@ The communication part of the tool is based on the samples provided by Microsoft
 The solution also consist of a setup program that let you easily distribute the app within your project, endpoints, services and id and keys can be added to simplify for the users that's testing your API if you add the information to the files in the installation.
 
 To be able to load the setup program in Visual Studio the Extension "Microsoft Visual Studio Installer Project" must be installed first.
+
+Visit DevMethod's site and check out the DevMethod tools for Azure TFVC projects: https://devmethod.azurewebsites.net
