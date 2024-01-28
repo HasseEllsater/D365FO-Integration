@@ -1,3 +1,5 @@
+# More cool tools
+Visit DevMethod's site and check out the DevMethod tools for Azure TFVC projects: https://devmethod.azurewebsites.net
 # D365FO-Integration
 
 The project here is a simple test tool to test Custom services in D365FO using JSON. The usage areas of the tool is very specific, it is primarly targeting developers creating custom services using JSON for request and response. It is also used by us in our projects by our application consultants when we perform different end to end tests in the solutions.
@@ -10,5 +12,4 @@ The solution also consist of a setup program that let you easily distribute the 
 
 To be able to load the setup program in Visual Studio the Extension "Microsoft Visual Studio Installer Project" must be installed first.
 
-# More cool tools
-Visit DevMethod's site and check out the DevMethod tools for Azure TFVC projects: https://devmethod.azurewebsites.net
+
